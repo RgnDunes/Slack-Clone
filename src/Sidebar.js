@@ -15,9 +15,11 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import db from "./firebase";
 import { Link } from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 
 function Sidebar() {
   const [channels, setChannels] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     db.collection("rooms").onSnapshot((snapshot) =>
@@ -37,7 +39,7 @@ function Sidebar() {
           <h2>RgnDunes</h2>
           <h3>
             <FiberManualRecordIcon />
-            Divyansh Singh
+            {user?.displayName}
           </h3>
         </div>
         <CreateIcon />
