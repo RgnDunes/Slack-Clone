@@ -14,6 +14,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import db from "./firebase";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   const [channels, setChannels] = useState([]);
@@ -52,9 +53,9 @@ function Sidebar() {
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
-      <SidebarOption Icon={AddIcon} title="Add more" />
+      <SidebarOption Icon={AddIcon} addChannelOption title="Add more" />
       {channels.map(({ id, name }) => (
-        <SidebarOption key={id} title={name} />
+        <SidebarOption key={id} id={id} title={name} />
       ))}
     </div>
   );
